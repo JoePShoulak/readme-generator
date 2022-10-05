@@ -2,19 +2,16 @@
 
 ## Description
 A README generator so good, your users will want to study them. 
-## Link
-TODO: Add a deployment link.
+
 ## Installation
-TODO: Add installation instructions.
+Better instructions will come when it's on NPM. For now, please just clone it. 
+
 ## Usage
-TODO: Add usage instructions.
-## Contribute
-TODO: Add contribution instructions.
-## Credits
-TODO: Add project credits.
+`node index.js`
+
 ## Features
-TODO: Add a list of features.
-## Tests
-TODO: Add a list of tests users can run.
+Generates a multi-section readme, as well as a license, with nicely formatted markdown. 
+Also creates badges. 
+
 ## License
 MIT
