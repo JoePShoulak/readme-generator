@@ -3,13 +3,14 @@ const questions = [
     {
         name: "title",
         type: "input",
-        message: "What is the title of your project?"
+        message: "What is the title of your project?",
+        default: "TODO: Add a title."
     },
     {
         name: "description",
         type: "input",
         message: "Describe your project:",
-        default: "TODO: Add a description"
+        default: "TODO: Add a description."
     },
     {
         name: "installation",
@@ -51,8 +52,14 @@ const questions = [
             "GNU GPLv3",
             "ISC",
         ]
+    },  
+    // TODO: We're only using this conditionally, let's find a way to use it by default  
+    {
+        name: "fullName",
+        type: "input",
+        message: "Enter your full name: ",
+        default: "TODO: Put in your name."
     },
   ]
 
   export default questions;
-  

@@ -1,23 +1,26 @@
+import inquirer from "inquirer";
+
 import {writeFileSync, readFileSync} from "fs";
 
 // A Class to hold all our data and functions
 class Markdown {
     // Init
-    constructor() {
+    constructor(readmeData) {
         this.content = "";
+        this.readmeData = readmeData;
         return this;
     }
 
     // Add a title header
-    addTitle(text) {
-        this.content += `# ${text}\n`;
+    addTitle() {
+        this.content += `# ${this.readmeData.title}\n`;
         return this;
     }
 
     // Add a section header with an optional body
-    addSection(text, body=null) {
+    addSection(text) {
         this.content += `## ${text}\n`;
-        if (body) {this.addContent(body);}
+        this.addContent(this.readmeData[text.toLowerCase()]);
         return this;
     }
 
@@ -34,14 +37,14 @@ class Markdown {
             case "MIT":
                 templateLocation = "./licenses/mit.txt"
                 break;
+            case "ISC":
+                templateLocation = "./licenses/isc.txt"
+                break;
             case "Apache License 2.0":
                 templateLocation = "./licenses/apache2.txt"
                 break;
             case "GNU GPLv3":
                 templateLocation = "./licenses/gnu3.txt"
-                break;
-            case "ISC":
-                templateLocation = "./licenses/isc.txt"
                 break;
         }
 
@@ -49,7 +52,7 @@ class Markdown {
     }
 
     saveLicense(content) {
-        writeFileSync('./LICENSE.txt', content, function (err,data) {
+        writeFileSync('./TEST_LICENSE.txt', content, function (err,data) {
             if (err) {
                 return console.log(err);
             }
@@ -57,8 +60,22 @@ class Markdown {
             });
     }
 
-    addLicense(license) {
-        let content = readFileSync(this.getLicense(license)).toString();
+    validateLicenseContent(content) {
+        if (content.includes("[year]")) {
+            const year = new Date().getFullYear();
+            const fullname = this.readmeData.fullName;
+            
+            content = content.replace("[year]", year).replace("[fullname]", fullname)
+        }
+
+        return content;
+    }
+
+    addLicense() {
+        let content = readFileSync(this.getLicense(this.readmeData.license)).toString();
+        
+        content = this.validateLicenseContent(content);
+
         this.saveLicense(content);
 
         return this;
@@ -73,19 +90,19 @@ class Markdown {
 
 // Generate a readme from the data gotten from Inquirer
 function generateReadme(readmeData) {
-    return new Markdown()
+    return new Markdown(readmeData)
         // TODO: Double check the formatting and styling of this for polish
-        .addTitle(readmeData.title)
+        .addTitle()
 
-        .addSection("Description", readmeData.description)
-        .addSection("Installation", readmeData.installation)
-        .addSection("Usage", readmeData.usage)
-        .addSection("Contribute", readmeData.contribute)
-        .addSection("Features", readmeData.features)
-        .addSection("Tests", readmeData.tests)
-        .addSection("License", readmeData.license)
+        .addSection("Description")
+        .addSection("Installation")
+        .addSection("Usage")
+        .addSection("Contribute")
+        .addSection("Features")
+        .addSection("Tests")
+        .addSection("License")
 
-        .addLicense(readmeData.license)
+        .addLicense()
         // TODO: Add badges (https://shields.io/)
         .addBadge()
         .content;

@@ -1,6 +1,6 @@
-# 
+# TODO: Add a title.
 ## Description
-TODO: Add a description
+TODO: Add a description.
 ## Installation
 TODO: Add installation instructions.
 ## Usage
