@@ -2,20 +2,20 @@ import {writeFileSync} from "fs";
 
 // Figure out which license path we should load from the user's choice
 function getLicense(license) {
-        let templateLocation = ""
+        let templateLocation = "./licenses/"
     
         switch (license) {
             case "MIT":
-                templateLocation = "./licenses/mit.txt"
+                templateLocation += "mit.txt"
                 break;
             case "ISC":
-                templateLocation = "./licenses/isc.txt"
+                templateLocation += "isc.txt"
                 break;
             case "Apache License 2.0":
-                templateLocation = "./licenses/apache2.txt"
+                templateLocation += "apache2.txt"
                 break;
             case "GNU GPLv3":
-                templateLocation = "./licenses/gnu3.txt"
+                templateLocation += "gnu3.txt"
                 break;
         }
 
@@ -34,17 +34,20 @@ function validateLicenseContent(content, readmeData) {
     return content;
 }
 
-// TODO: have a way to switch this for production
 // Save the license to the directory
 function saveLicense(content) {
-    writeFileSync('./TEST_LICENSE.txt', content, function (error) {
+    let fileName = process.env.STUDYME_ENVIRONMENT ? "./TEST_LICENSE.txt" : "./LICENSE.txt"
+
+    writeFileSync(fileName, content, function (error) {
         if (error) {
-            return console.log(error);
+            console.log(error);
+            return;
         }
         console.log("License successfully generated!");
     });
 }
 
+// TODO: Fix this nonsense
 const _getLicense = getLicense;
 export { _getLicense as getLicense };
 const _validateLicenseContent = validateLicenseContent;
