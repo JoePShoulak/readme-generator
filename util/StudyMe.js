@@ -26,7 +26,7 @@ class StudyMe {
 
     // Add a section header with an optional body
     addSection(text, body=null) {
-        this.content += `## ${text}\n`;
+        this.content += `\n## ${text}\n`;
         body = body ? body : this.readmeData[text.toLowerCase()];
         this.addContent(body);
         return this;
