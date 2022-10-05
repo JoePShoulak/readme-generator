@@ -1,11 +1,13 @@
 import {readFileSync} from "fs";
-import {getLicense, validateLicenseContent, saveLicense} from "./licenseHelper.js"
+
+import {getLicense, validateLicenseContent, saveLicense, getLicenseInfo} from "./licenseHelper.js"
 
 // A Class to hold all our data and functions
-// TODO: Add deployed link and screenshot
 class StudyMe {
     // Init
     constructor(readmeData) {
+        readmeData.author = readmeData.fullName;
+
         this.content = "";
         this.readmeData = readmeData;
         return this;
@@ -18,9 +20,10 @@ class StudyMe {
     }
 
     // Add a section header with an optional body
-    addSection(text) {
+    addSection(text, body=null) {
         this.content += `## ${text}\n`;
-        this.addContent(this.readmeData[text.toLowerCase()]);
+        body = body ? body : this.readmeData[text.toLowerCase()];
+        this.addContent(body);
         return this;
     }
 
@@ -39,11 +42,10 @@ class StudyMe {
         saveLicense(validateLicenseContent(content, this.readmeData));
 
         // Add info about the license to the README
-        // TODO: be more descriptive about the license
-        return this.addSection("License");
+        return this.addSection("License", getLicenseInfo(this.readmeData.license));
     }
 
-    // TODO: Make this function
+    // TODO: Make this function add badges (https://shields.io/)
     addBadge(badge) {
         // this.content += 
         return this;
@@ -57,6 +59,7 @@ function generateReadme(readmeData) {
         .addTitle()
 
         .addSection("Description")
+        .addSection("Author")
         .addSection("Link")
         .addSection("Installation")
         .addSection("Usage")
@@ -67,8 +70,8 @@ function generateReadme(readmeData) {
 
         .addLicense()
 
-        // TODO: Add badges (https://shields.io/)
         .addBadge()
+
         .content;
 }
 

@@ -1,5 +1,17 @@
 import {writeFileSync} from "fs";
 
+// Get a nicer link to be able to inform the users of our license
+function getLicenseInfo(license) {
+    const lincenseLinks = {
+        "MIT": "https://choosealicense.com/licenses/mit/",
+        "Apache License 2.0": "https://choosealicense.com/licenses/apache-2.0/",
+        "GNU GPLv3": "https://choosealicense.com/licenses/gpl-3.0/",
+        "ISC": "https://choosealicense.com/licenses/isc/",
+    };
+
+    return `This project uses the [${license} license](${lincenseLinks[license]})`;
+}
+
 // Figure out which license path we should load from the user's choice
 function getLicense(license) {
         let templateLocation = "./licenses/"
@@ -47,10 +59,4 @@ function saveLicense(content) {
     });
 }
 
-// TODO: Fix this nonsense
-const _getLicense = getLicense;
-export { _getLicense as getLicense };
-const _validateLicenseContent = validateLicenseContent;
-export { _validateLicenseContent as validateLicenseContent };
-const _saveLicense = saveLicense;
-export { _saveLicense as saveLicense };
+export {getLicense, validateLicenseContent, saveLicense, getLicenseInfo}

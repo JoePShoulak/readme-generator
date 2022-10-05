@@ -6,7 +6,6 @@ const questions = [
         message: "What is the title of your project?",
         default: "TODO: Add a title."
     },
-    // TODO: We're only using this conditionally, let's find a way to use it by default  
     {
         name: "fullName",
         type: "input",
