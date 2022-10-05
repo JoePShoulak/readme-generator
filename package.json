@@ -1,8 +1,9 @@
 {
   "name": "studyme",
   "version": "1.0.0",
-  "description": "",
+  "description": "Generates a README so good, your users will want to study it.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/JoePShoulak/studyme/issues"
   },
-  "homepage": "https://github.com/JoePShoulak/studyme#readme"
+  "homepage": "https://github.com/JoePShoulak/studyme#readme",
+  "dependencies": {
+    "inquirer": "^9.1.2"
+  }
 }
