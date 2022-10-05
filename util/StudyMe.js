@@ -8,6 +8,10 @@ class StudyMe {
     constructor(readmeData) {
         readmeData.author = readmeData.fullName;
 
+        if (readmeData.gh_username && readmeData.gh_repo_name) {
+            readmeData.badge = `![License Badge](http://github.com/github/license/${readmeData.gh_username}/${readmeData.gh_repo_name})`
+        }
+
         this.content = "";
         this.readmeData = readmeData;
         return this;
@@ -47,7 +51,8 @@ class StudyMe {
 
     // TODO: Make this function add badges (https://shields.io/)
     addBadge(badge) {
-        // this.content += 
+        this.content += this.readmeData.badge + "\n";
+
         return this;
     }
 }
@@ -57,6 +62,7 @@ function generateReadme(readmeData) {
     return new StudyMe(readmeData)
         // TODO: Double check the formatting and styling of this for polish
         .addTitle()
+        .addBadge()
 
         .addSection("Description")
         .addSection("Author")
@@ -70,7 +76,6 @@ function generateReadme(readmeData) {
 
         .addLicense()
 
-        .addBadge()
 
         .content;
 }

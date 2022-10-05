@@ -13,6 +13,16 @@ const questions = [
         default: "TODO: Put in your name."
     },
     {
+        name: "gh_username",
+        type: "input",
+        message: "Enter your GitHub username:",
+    },
+    {
+        name: "gh_repo_name",
+        type: "input",
+        message: "Enter your GitHub Repo name:",
+    },
+    {
         name: "description",
         type: "input",
         message: "Describe your project:",

@@ -1,4 +1,8 @@
 # StudyMe
+
+![License Badge](http://github.com/github/license/joepshoulak/studyme)
+
+
 ## Description
 A README generator so good, your users will want to study them. 
 ## Link
