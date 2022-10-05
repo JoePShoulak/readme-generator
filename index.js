@@ -9,7 +9,7 @@ dotenv.config();
 
 // Write out the generated readme to a test file for dev
 function saveReadme(readme) {
-	let fileName = process.env.STUDYME_ENVIRONMENT ? "./TEST_README.md" : "./README.md"
+	let fileName = process.env.STUDYME_ENVIRONMENT ? "./test/README.md" : "./README.md"
 
 	writeFileSync(fileName, readme, error => {
 		if (error) {

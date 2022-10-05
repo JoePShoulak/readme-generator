@@ -36,7 +36,7 @@ function validateLicenseContent(content, readmeData) {
 
 // Save the license to the directory
 function saveLicense(content) {
-    let fileName = process.env.STUDYME_ENVIRONMENT ? "./TEST_LICENSE.txt" : "./LICENSE.txt"
+    let fileName = process.env.STUDYME_ENVIRONMENT ? "./test/LICENSE.txt" : "./LICENSE.txt"
 
     writeFileSync(fileName, content, function (error) {
         if (error) {
