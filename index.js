@@ -7,6 +7,7 @@ import generateReadme from "./util/Markdown.js";
 // Write out the generated readme to a test file for dev
 // TODO: have a way to switch this for production
 function saveReadme(readme) {
+	// TODO: We're doing this twice similarily enough to be broken out, I think
 	writeFileSync("./TEST_README.md", readme, err => {
 		if (err) {
 			// TODO: implement some more polished error handling

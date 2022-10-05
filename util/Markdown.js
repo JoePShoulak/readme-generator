@@ -1,3 +1,5 @@
+import {writeFileSync, readFileSync} from "fs";
+
 // A Class to hold all our data and functions
 class Markdown {
     // Init
@@ -25,9 +27,40 @@ class Markdown {
         return this;
     }
 
-    // TODO: Make this function
+    getLicense(license) {
+        let templateLocation = ""
+        
+        switch (license) {
+            case "MIT":
+                templateLocation = "./licenses/mit.txt"
+                break;
+            case "Apache License 2.0":
+                templateLocation = "./licenses/apache2.txt"
+                break;
+            case "GNU GPLv3":
+                templateLocation = "./licenses/gnu3.txt"
+                break;
+            case "ISC":
+                templateLocation = "./licenses/isc.txt"
+                break;
+        }
+
+        return templateLocation;
+    }
+
+    saveLicense(content) {
+        writeFileSync('./LICENSE.txt', content, function (err,data) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log(data);
+            });
+    }
+
     addLicense(license) {
-        // this.content += 
+        let content = readFileSync(this.getLicense(license)).toString();
+        this.saveLicense(content);
+
         return this;
     }
 
@@ -41,7 +74,9 @@ class Markdown {
 // Generate a readme from the data gotten from Inquirer
 function generateReadme(readmeData) {
     return new Markdown()
+        // TODO: Double check the formatting and styling of this for polish
         .addTitle(readmeData.title)
+
         .addSection("Description", readmeData.description)
         .addSection("Installation", readmeData.installation)
         .addSection("Usage", readmeData.usage)
@@ -49,8 +84,8 @@ function generateReadme(readmeData) {
         .addSection("Features", readmeData.features)
         .addSection("Tests", readmeData.tests)
         .addSection("License", readmeData.license)
-        // TODO: Add the license (https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
-        .addLicense()
+
+        .addLicense(readmeData.license)
         // TODO: Add badges (https://shields.io/)
         .addBadge()
         .content;
