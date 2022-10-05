@@ -9,8 +9,8 @@ class StudyMe {
         readmeData.author = readmeData.fullName;
 
         if (readmeData.gh_username && readmeData.gh_repo_name) {
-            readmeData.badge = `![License Badge](https://img.shields.io/github/license/${readmeData.gh_username}/${readmeData.gh_repo_name}) `
-            readmeData.badge += `![License Badge](https://img.shields.io/github/last-commit/${readmeData.gh_username}/${readmeData.gh_repo_name})`
+            readmeData.badges = `![License Badge](https://img.shields.io/github/license/${readmeData.gh_username}/${readmeData.gh_repo_name}) `
+            readmeData.badges += `![License Badge](https://img.shields.io/github/last-commit/${readmeData.gh_username}/${readmeData.gh_repo_name})`
         }
 
         this.content = "";
@@ -53,8 +53,10 @@ class StudyMe {
     // Add latest-commit and license badges to the project
     addBadges() {
 
-        if (this.readmeData.badge) {
-            this.content += this.readmeData.badge + "\n";
+        if (this.readmeData.badges) {
+            this.content += this.readmeData.badges + "\n";
+        } else {
+            this.content += "TODO: Add some nice badges!\n"
         }
 
         return this;
