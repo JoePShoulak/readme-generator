@@ -52,12 +52,7 @@ class StudyMe {
 
     // Add latest-commit and license badges to the project
     addBadges() {
-
-        if (this.readmeData.badges) {
-            this.content += this.readmeData.badges + "\n";
-        } else {
-            this.content += "TODO: Add some nice badges!\n"
-        }
+        this.content += this.readmeData.badges ? this.readmeData.badges + "\n" : "TODO: Add some nice badges!\n";
 
         return this;
     }
