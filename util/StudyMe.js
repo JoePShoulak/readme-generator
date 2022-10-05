@@ -1,6 +1,8 @@
-import {writeFileSync, readFileSync} from "fs";
+import {readFileSync} from "fs";
+import {getLicense, validateLicenseContent, saveLicense} from "./licenseHelper.js"
 
 // A Class to hold all our data and functions
+// TODO: Add deployed link and screenshot
 class StudyMe {
     // Init
     constructor(readmeData) {
@@ -28,59 +30,16 @@ class StudyMe {
         return this;
     }
 
-    // Figure out which license path we should load from the user's choice
-    getLicense(license) {
-        let templateLocation = ""
-        
-        switch (license) {
-            case "MIT":
-                templateLocation = "./licenses/mit.txt"
-                break;
-            case "ISC":
-                templateLocation = "./licenses/isc.txt"
-                break;
-            case "Apache License 2.0":
-                templateLocation = "./licenses/apache2.txt"
-                break;
-            case "GNU GPLv3":
-                templateLocation = "./licenses/gnu3.txt"
-                break;
-        }
-
-        return templateLocation;
-    }
-
-    // If the license requires a year and full name, add those in
-    validateLicenseContent(content) {
-        if (content.includes("[year]")) {
-            const year = new Date().getFullYear();
-            const fullname = this.readmeData.fullName;
-            
-            content = content.replace("[year]", year).replace("[fullname]", fullname)
-        }
-
-        return content;
-    }
-
-    // TODO: have a way to switch this for production
-    // Save the license to the directory
-    saveLicense(content) {
-        writeFileSync('./TEST_LICENSE.txt', content, function (error) {
-            if (error) {
-                return console.log(error);
-            }
-            console.log("License successfully generated!");
-            });
-    }
-
     // Add the license file to our project
     addLicense() {
-        let content = readFileSync(this.getLicense(this.readmeData.license)).toString();
+        // Grab the relevant license content
+        let content = readFileSync(getLicense(this.readmeData.license)).toString();
         
-        content = this.validateLicenseContent(content);
+        // Validate that if it requires year and fullname, populate those and save the file
+        saveLicense(validateLicenseContent(content, this.readmeData));
 
-        this.saveLicense(content);
-
+        // Add info about the license to the README
+        // TODO: be more descriptive about the license
         return this.addSection("License");
     }
 
@@ -98,6 +57,7 @@ function generateReadme(readmeData) {
         .addTitle()
 
         .addSection("Description")
+        .addSection("Link")
         .addSection("Installation")
         .addSection("Usage")
         .addSection("Contribute")

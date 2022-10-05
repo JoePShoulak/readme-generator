@@ -20,6 +20,12 @@ const questions = [
         default: "TODO: Add a description."
     },
     {
+        name: "link",
+        type: "input",
+        message: "Enter your deployment link:",
+        default: "TODO: Add a deployment link."
+    },
+    {
         name: "installation",
         type: "input",
         message: "Describe your installation process:",
