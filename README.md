@@ -1,6 +1,6 @@
-# TODO: Add a title.
+# StudyMe
 ## Description
-TODO: Add a description.
+A README generator so good, your users will want to study them. 
 ## Link
 TODO: Add a deployment link.
 ## Installation
