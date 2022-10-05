@@ -9,7 +9,8 @@ class StudyMe {
         readmeData.author = readmeData.fullName;
 
         if (readmeData.gh_username && readmeData.gh_repo_name) {
-            readmeData.badge = `![License Badge](/github/license/${readmeData.gh_username}/${readmeData.gh_repo_name})`
+            readmeData.badge = `![License Badge](https://img.shields.io/github/license/${readmeData.gh_username}/${readmeData.gh_repo_name}) `
+            readmeData.badge += `![License Badge](https://img.shields.io/github/last-commit/${readmeData.gh_username}/${readmeData.gh_repo_name})`
         }
 
         this.content = "";
@@ -49,9 +50,12 @@ class StudyMe {
         return this.addSection("License", getLicenseInfo(this.readmeData.license));
     }
 
-    // TODO: Make this function add badges (https://shields.io/)
-    addBadge(badge) {
-        this.content += this.readmeData.badge + "\n";
+    // Add latest-commit and license badges to the project
+    addBadges() {
+
+        if (this.readmeData.badge) {
+            this.content += this.readmeData.badge + "\n";
+        }
 
         return this;
     }
@@ -62,7 +66,7 @@ function generateReadme(readmeData) {
     return new StudyMe(readmeData)
         // TODO: Double check the formatting and styling of this for polish
         .addTitle()
-        .addBadge()
+        .addBadges()
 
         .addSection("Description")
         .addSection("Author")
@@ -75,7 +79,6 @@ function generateReadme(readmeData) {
         .addSection("Tests")
 
         .addLicense()
-
 
         .content;
 }
