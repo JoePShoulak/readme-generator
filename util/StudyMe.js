@@ -9,7 +9,7 @@ class StudyMe {
         readmeData.author = readmeData.fullName;
 
         if (readmeData.gh_username && readmeData.gh_repo_name) {
-            readmeData.badge = `![License Badge](http://github.com/github/license/${readmeData.gh_username}/${readmeData.gh_repo_name})`
+            readmeData.badge = `![License Badge](/github/license/${readmeData.gh_username}/${readmeData.gh_repo_name})`
         }
 
         this.content = "";
