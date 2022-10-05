@@ -1,8 +1,9 @@
+// The questions we're asking the user to define the readme
 const questions = [
     {
         name: "title",
         type: "input",
-        message: "What is the title of your project?",
+        message: "What is the title of your project?"
     },
     {
         name: "description",
@@ -47,7 +48,6 @@ const questions = [
         choices: [
             "MIT",
             "Apache License 2.0",
-            "GNU GPLv2",
             "GNU GPLv3",
             "ISC",
         ]
@@ -55,3 +55,4 @@ const questions = [
   ]
 
   export default questions;
+  
