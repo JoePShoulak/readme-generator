@@ -6,6 +6,13 @@ const questions = [
         message: "What is the title of your project?",
         default: "TODO: Add a title."
     },
+    // TODO: We're only using this conditionally, let's find a way to use it by default  
+    {
+        name: "fullName",
+        type: "input",
+        message: "Enter your full name:",
+        default: "TODO: Put in your name."
+    },
     {
         name: "description",
         type: "input",
@@ -32,15 +39,21 @@ const questions = [
     },
     {
         name: "features",
-        type: "editor",
+        type: "input",
         message: "List the features of your project:",
         default: "TODO: Add a list of features."
     },
     {
         name: "tests",
-        type: "editor",
+        type: "input",
         message: "List the tests users can run with your project.",
         default: "TODO: Add a list of tests users can run."
+    },
+    {
+        name: "credits",
+        type: "input",
+        message: "List what helped you make this project:",
+        default: "TODO: Add project credits."
     },
     {
         name: "license",
@@ -53,13 +66,6 @@ const questions = [
             "ISC",
         ]
     },  
-    // TODO: We're only using this conditionally, let's find a way to use it by default  
-    {
-        name: "fullName",
-        type: "input",
-        message: "Enter your full name: ",
-        default: "TODO: Put in your name."
-    },
   ]
 
   export default questions;

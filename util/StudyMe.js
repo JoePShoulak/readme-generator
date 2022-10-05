@@ -1,9 +1,7 @@
-import inquirer from "inquirer";
-
 import {writeFileSync, readFileSync} from "fs";
 
 // A Class to hold all our data and functions
-class Markdown {
+class StudyMe {
     // Init
     constructor(readmeData) {
         this.content = "";
@@ -30,6 +28,7 @@ class Markdown {
         return this;
     }
 
+    // Figure out which license path we should load from the user's choice
     getLicense(license) {
         let templateLocation = ""
         
@@ -51,15 +50,7 @@ class Markdown {
         return templateLocation;
     }
 
-    saveLicense(content) {
-        writeFileSync('./TEST_LICENSE.txt', content, function (err,data) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log(data);
-            });
-    }
-
+    // If the license requires a year and full name, add those in
     validateLicenseContent(content) {
         if (content.includes("[year]")) {
             const year = new Date().getFullYear();
@@ -71,6 +62,18 @@ class Markdown {
         return content;
     }
 
+    // TODO: have a way to switch this for production
+    // Save the license to the directory
+    saveLicense(content) {
+        writeFileSync('./TEST_LICENSE.txt', content, function (error) {
+            if (error) {
+                return console.log(error);
+            }
+            console.log("License successfully generated!");
+            });
+    }
+
+    // Add the license file to our project
     addLicense() {
         let content = readFileSync(this.getLicense(this.readmeData.license)).toString();
         
@@ -78,7 +81,7 @@ class Markdown {
 
         this.saveLicense(content);
 
-        return this;
+        return this.addSection("License");
     }
 
     // TODO: Make this function
@@ -90,7 +93,7 @@ class Markdown {
 
 // Generate a readme from the data gotten from Inquirer
 function generateReadme(readmeData) {
-    return new Markdown(readmeData)
+    return new StudyMe(readmeData)
         // TODO: Double check the formatting and styling of this for polish
         .addTitle()
 
@@ -98,11 +101,12 @@ function generateReadme(readmeData) {
         .addSection("Installation")
         .addSection("Usage")
         .addSection("Contribute")
+        .addSection("Credits")
         .addSection("Features")
         .addSection("Tests")
-        .addSection("License")
 
         .addLicense()
+
         // TODO: Add badges (https://shields.io/)
         .addBadge()
         .content;
