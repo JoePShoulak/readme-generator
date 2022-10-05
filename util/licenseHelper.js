@@ -1,7 +1,7 @@
 import {writeFileSync} from "fs";
 
-// Get a nicer link to be able to inform the users of our license
-function getLicenseInfo(license) {
+// Get a link to be able to inform the users of our license terms
+function getLicenseLink(license) {
     const lincenseLinks = {
         "MIT": "https://choosealicense.com/licenses/mit/",
         "Apache License 2.0": "https://choosealicense.com/licenses/apache-2.0/",
@@ -48,15 +48,17 @@ function validateLicenseContent(content, readmeData) {
 
 // Save the license to the directory
 function saveLicense(content) {
+    // Saves to ./test/ in dev/test and to ./ in production
     let fileName = process.env.STUDYME_ENVIRONMENT ? "./test/LICENSE.txt" : "./LICENSE.txt"
 
     writeFileSync(fileName, content, function (error) {
         if (error) {
-            console.log(error);
+            console.error(error);
             return;
         }
+        
         console.log("License successfully generated!");
     });
 }
 
-export {getLicense, validateLicenseContent, saveLicense, getLicenseInfo}
+export {getLicense, validateLicenseContent, saveLicense, getLicenseLink}
