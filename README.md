@@ -1,6 +1,18 @@
 # StudyMe
 ![License Badge](https://img.shields.io/github/license/joepshoulak/studyme) ![License Badge](https://img.shields.io/github/last-commit/joepshoulak/studyme)
 
+## Table of Contents
+- [Description](#description)
+- [Author](#author)
+- [Deployment](#deployment)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contribute](#contribute)
+- [Credits](#credits)
+- [Features](#features)
+- [Tests](#tests)
+
 ## Description
 StudyMe is a READMEand LICENSE file generator for your Node.js projects. It asks you a few simple questions to guide you through the critically important parts of a standard ReadMe file and produces a well-formatted README.md automatically based on your responses.
 

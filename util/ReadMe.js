@@ -19,6 +19,7 @@ class ReadMe {
         this.readmeData = readmeData;
 
         this.sections = ["Description", "Author", "Deployment", "Dependencies", "Installation", "Usage", "Contribute", "Credits", "Features", "Tests"];
+        this.tableOfContents = this.generateTableOfContents();
 
 
         return this; // Returning this each time lets us do .chain() notation
@@ -31,7 +32,8 @@ class ReadMe {
         return this;
     }
 
-    tableOfContents() {
+    // Generate the table of contents
+    generateTableOfContents() {
         let content = ""
 
         for (let section of this.sections) {
@@ -77,13 +79,12 @@ class ReadMe {
         return this.addSection("License", license.link);
     }
 
-    generate() {
-        console.log(this.tableOfContents())
+    generateContent() {
 
         return this
             .addTitle()
             .addBadges()
-            .addSection("Table of Contents", this.tableOfContents())
+            .addSection("Table of Contents", this.tableOfContents)
             .addSection("Description")
             .addSection("Author")
             .addSection("Deployment")

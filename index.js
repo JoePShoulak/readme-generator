@@ -12,7 +12,7 @@ dotenv.config();
 inquirer
 	.prompt(questions) // Ask the questions
 	.then((answers) => { // Get the answers
-		let readme = new ReadMe(answers).generate(); // Generate the readme content and save it out
+		let readme = new ReadMe(answers).generateContent(); // Generate the readme content and save it out
 		readme.save();
 	})	
 	.catch((error) => {
