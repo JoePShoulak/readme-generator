@@ -61,4 +61,4 @@ function saveLicense(content) {
     });
 }
 
-export {getLicenseFile as getLicense, validateLicenseContent, saveLicense, getLicenseLink}
+export {getLicenseFile, validateLicenseContent, saveLicense, getLicenseLink}

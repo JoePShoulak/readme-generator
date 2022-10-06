@@ -1,6 +1,6 @@
 import {readFileSync} from "fs";
 
-import {getLicense as getLicenseFile, validateLicenseContent, saveLicense, getLicenseLink} from "./licenseHelper.js"
+import {getLicenseFile, validateLicenseContent, saveLicense, getLicenseLink} from "./licenseHelper.js"
 
 // A Class to hold all our data and functions
 class StudyMe {
@@ -28,13 +28,10 @@ class StudyMe {
         return this;
     }
 
-    // Add a section header with an optional body
-    addSection(text, body=null) {
-        this.content += `\n## ${text}\n`;
-
-        // If a body was passed, use it; otherwise greab it from the readmeData object
-        body = body ? body : this.readmeData[text.toLowerCase()];
-        this.addContent(body);
+    // Add latest-commit and license badges to the project
+    addBadges() {
+        // If we have badge data, append that to the content; otherwise add a TODO for it
+        this.content += this.readmeData.badges ? this.readmeData.badges + "\n" : "TODO: Add some nice badges!\n";
 
         return this;
     }
@@ -42,6 +39,17 @@ class StudyMe {
     // Add content without a header
     addContent(text) {
         this.content += `${text}\n`;
+
+        return this;
+    }
+
+    // Add a section header with an optional body
+    addSection(text, body=null) {
+        this.content += `\n## ${text}\n`;
+
+        // If a body was passed, use it; otherwise greab it from the readmeData object
+        body = body ? body : this.readmeData[text.toLowerCase()];
+        this.addContent(body);
 
         return this;
     }
@@ -56,14 +64,6 @@ class StudyMe {
 
         // Add info about the license to the README
         return this.addSection("License", getLicenseLink(this.readmeData.license));
-    }
-
-    // Add latest-commit and license badges to the project
-    addBadges() {
-        // If we have badge data, append that to the content; otherwise add a TODO for it
-        this.content += this.readmeData.badges ? this.readmeData.badges + "\n" : "TODO: Add some nice badges!\n";
-
-        return this;
     }
 }
 
