@@ -29,10 +29,16 @@ const questions = [
         default: "TODO: Add a description."
     },
     {
-        name: "link",
+        name: "deployment",
         type: "input",
         message: "Enter your deployment link:",
         default: "TODO: Add a deployment link."
+    },
+    {
+        name: "dependencies",
+        type: "input",
+        message: "List your dependencies:",
+        default: "TODO: Add dependencies list."
     },
     {
         name: "installation",
