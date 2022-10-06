@@ -7,14 +7,18 @@ A ReadMe maker so good, your users will want to study it!
 ## Author
 Joe Shoulak
 
-## Link
+## Deployment
 TODO: Add a deployment link.
 
+## Dependencies
+- Node: v16.17.1
+- NPM: 8.15.0
+
 ## Installation
-git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i
+`git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i`
 
 ## Usage
-node index
+`node index`
 
 ## Contribute
 TODO: Add contribution instructions.
