@@ -2,7 +2,9 @@
 ![License Badge](https://img.shields.io/github/license/joepshoulak/studyme) ![License Badge](https://img.shields.io/github/last-commit/joepshoulak/studyme)
 
 ## Description
-A ReadMe maker so good, your users will want to study it!
+StudyMe is a READMEand LICENSE file generator for your Node.js projects. It asks you a few simple questions to guide you through the critically important parts of a standard ReadMe file and produces a well-formatted README.md automatically based on your responses.
+
+Stop copying and pasting README.md files from your other projects and other developers. Use StudyMe to make the README for your next project, and you'll want to use it for the rest!
 
 ## Author
 Joe Shoulak
