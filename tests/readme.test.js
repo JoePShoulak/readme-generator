@@ -1,6 +1,6 @@
-import generateReadme from "../util/StudyMe";
+import ReadMe from "../util/ReadMe.js";
 
-describe("Generate Readme Function", () => {
+describe("Readme.generate", () => {
     describe("When given all good data", () => {
         const input = {
             "title": "This is a title",
@@ -19,7 +19,8 @@ describe("Generate Readme Function", () => {
             "license": "MIT"
         };
         
-        const output = generateReadme(input);
+        let readme = new ReadMe(input).generate();
+        const output = readme.content;
         
         // Title
         test("it should contain the title section", () => {

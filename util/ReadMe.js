@@ -1,7 +1,9 @@
+import {writeFileSync} from "fs";
+
 import License from "./License.js"
 
 // A Class to hold all our data and functions
-class StudyMe {
+class ReadMe {
     // Init
     constructor(readmeData) {
         // Grab the fullname to put as the author
@@ -61,25 +63,36 @@ class StudyMe {
         // Add info about the license to the README
         return this.addSection("License", license.link);
     }
+
+    generate() {
+        return this
+            .addTitle()
+            .addBadges()
+            .addSection("Description")
+            .addSection("Author")
+            .addSection("Deployment")
+            .addSection("Dependencies")
+            .addSection("Installation")
+            .addSection("Usage")
+            .addSection("Contribute")
+            .addSection("Credits")
+            .addSection("Features")
+            .addSection("Tests")
+            .addLicense()
+    }
+
+    save() {
+        let fileName = process.env.STUDYME_ENVIRONMENT ? "./test/README.md" : "./README.md"
+
+        writeFileSync(fileName, this.content, error => {
+            if (error) {
+                console.error(error);
+                return;
+            }
+    
+            console.log("Readme successfully generated!")
+        })
+    }
 }
 
-// Generate a readme from the data gotten from Inquirer
-function generateReadme(readmeData) {
-    return new StudyMe(readmeData)
-        .addTitle()
-        .addBadges()
-        .addSection("Description")
-        .addSection("Author")
-        .addSection("Deployment")
-        .addSection("Dependencies")
-        .addSection("Installation")
-        .addSection("Usage")
-        .addSection("Contribute")
-        .addSection("Credits")
-        .addSection("Features")
-        .addSection("Tests")
-        .addLicense()
-        .content;
-}
-
-export default generateReadme;
+export default ReadMe;
