@@ -1,17 +1,32 @@
 # StudyMe
+![License Badge](https://img.shields.io/github/license/joepshoulak/studyme) ![License Badge](https://img.shields.io/github/last-commit/joepshoulak/studyme)
 
 ## Description
-A README generator so good, your users will want to study them. 
+A ReadMe maker so good, your users will want to study it!
+
+## Author
+Joe Shoulak
+
+## Link
+TODO: Add a deployment link.
 
 ## Installation
-`git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i`
+git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i
 
 ## Usage
-`node index.js`
+node index
+
+## Contribute
+TODO: Add contribution instructions.
+
+## Credits
+This project uses Node and Inquirer.
 
 ## Features
-Generates a multi-section readme, as well as a license, with nicely formatted markdown. 
-Also creates badges. 
+Generates a README and a LICENSE file
+
+## Tests
+TODO: Add a list of tests users can run.
 
 ## License
-MIT
+This project uses the [MIT license](https://choosealicense.com/licenses/mit/)
