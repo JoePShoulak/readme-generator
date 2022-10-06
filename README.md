@@ -4,7 +4,7 @@
 A README generator so good, your users will want to study them. 
 
 ## Installation
-Better instructions will come when it's on NPM. For now, please just clone it. 
+`git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i`
 
 ## Usage
 `node index.js`
