@@ -1,6 +1,4 @@
-import {readFileSync} from "fs";
-
-import {getLicenseFile, validateLicenseContent, saveLicense, getLicenseLink} from "./licenseHelper.js"
+import License from "./License.js"
 
 // A Class to hold all our data and functions
 class StudyMe {
@@ -57,13 +55,11 @@ class StudyMe {
     // Add the license file to our project
     addLicense() {
         // Grab the relevant license content
-        let content = readFileSync(getLicenseFile(this.readmeData.license)).toString();
-        
-        // Validate; if it requires year and fullname, populate those and save the file
-        saveLicense(validateLicenseContent(content, this.readmeData));
+        let license = new License(this.readmeData)
+        license.save()
 
         // Add info about the license to the README
-        return this.addSection("License", getLicenseLink(this.readmeData.license));
+        return this.addSection("License", license.link);
     }
 }
 

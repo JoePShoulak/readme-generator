@@ -2,7 +2,6 @@ import generateReadme from "../util/StudyMe";
 
 describe("Generate Readme Function", () => {
     describe("When given all good data", () => {
-
         const input = {
             "title": "This is a title",
             "fullName": "Joe P Shoulak",
