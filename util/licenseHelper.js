@@ -13,7 +13,7 @@ function getLicenseLink(license) {
 }
 
 // Figure out which license path we should load from the user's choice
-function getLicense(license) {
+function getLicenseFile(license) {
         let templateLocation = "./licenses/"
     
         switch (license) {
@@ -61,4 +61,4 @@ function saveLicense(content) {
     });
 }
 
-export {getLicense, validateLicenseContent, saveLicense, getLicenseLink}
+export {getLicenseFile as getLicense, validateLicenseContent, saveLicense, getLicenseLink}
