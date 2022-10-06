@@ -18,6 +18,9 @@ class ReadMe {
         this.content = ""; // Set the content to blank so we can append
         this.readmeData = readmeData;
 
+        this.sections = ["Description", "Author", "Deployment", "Dependencies", "Installation", "Usage", "Contribute", "Credits", "Features", "Tests"];
+
+
         return this; // Returning this each time lets us do .chain() notation
     }
 
@@ -26,6 +29,16 @@ class ReadMe {
         this.content += `# ${this.readmeData.title}\n`;
 
         return this;
+    }
+
+    tableOfContents() {
+        let content = ""
+
+        for (let section of this.sections) {
+            content += `- [${section}](#${section.toLowerCase()})\n`
+        }
+
+        return content;
     }
 
     // Add latest-commit and license badges to the project
@@ -65,9 +78,12 @@ class ReadMe {
     }
 
     generate() {
+        console.log(this.tableOfContents())
+
         return this
             .addTitle()
             .addBadges()
+            .addSection("Table of Contents", this.tableOfContents())
             .addSection("Description")
             .addSection("Author")
             .addSection("Deployment")
