@@ -1,4 +1,4 @@
-# StudyME
+# StudyMe
 ![License Badge](https://img.shields.io/github/license/joepshoulak/studyme) ![License Badge](https://img.shields.io/github/last-commit/joepshoulak/studyme)
 
 ## Table of Contents
