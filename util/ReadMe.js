@@ -25,13 +25,7 @@ class ReadMe {
         return this; // Returning this each time lets us do .chain() notation
     }
 
-    // Add a title header
-    addTitle() {
-        this.content += `# ${this.readmeData.title}\n`;
-
-        return this;
-    }
-
+    /* == CONSTRUCTOR HELPERS == */
     // Generate the table of contents
     generateTableOfContents() {
         let content = ""
@@ -41,6 +35,34 @@ class ReadMe {
         }
 
         return content;
+    }
+    
+    // Generate the readme
+    generateContent() {
+
+        return this
+            .addTitle()
+            .addBadges()
+            .addSection("Table of Contents", this.tableOfContents)
+            .addSection("Description")
+            .addSection("Author")
+            .addSection("Deployment")
+            .addSection("Dependencies")
+            .addSection("Installation")
+            .addSection("Usage")
+            .addSection("Contribute")
+            .addSection("Credits")
+            .addSection("Features")
+            .addSection("Tests")
+            .addLicense()
+    }
+
+    /* == MAIN FUNCTIONS == */
+    // Add a title header
+    addTitle() {
+        this.content += `# ${this.readmeData.title}\n`;
+
+        return this;
     }
 
     // Add latest-commit and license badges to the project
@@ -79,24 +101,7 @@ class ReadMe {
         return this.addSection("License", license.link);
     }
 
-    generateContent() {
 
-        return this
-            .addTitle()
-            .addBadges()
-            .addSection("Table of Contents", this.tableOfContents)
-            .addSection("Description")
-            .addSection("Author")
-            .addSection("Deployment")
-            .addSection("Dependencies")
-            .addSection("Installation")
-            .addSection("Usage")
-            .addSection("Contribute")
-            .addSection("Credits")
-            .addSection("Features")
-            .addSection("Tests")
-            .addLicense()
-    }
 
     save() {
         let fileName = process.env.STUDYME_ENVIRONMENT ? "./test/README.md" : "./README.md"
