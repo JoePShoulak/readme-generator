@@ -1,4 +1,4 @@
-# This is a title
+# StudyME
 ![License Badge](https://img.shields.io/github/license/joepshoulak/studyme) ![License Badge](https://img.shields.io/github/last-commit/joepshoulak/studyme)
 
 ## Table of Contents
@@ -20,10 +20,11 @@ Generate a README so good, your users will want to study it!
 Joe P Shoulak
 
 ## Deployment
-Filler deployment data
+TODO: Fill out deployment data
 
 ## Dependencies
-node, npm
+- node v16.17.1  
+- npm v8.15.0  
 
 ## Installation
 `git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i`
@@ -32,16 +33,18 @@ node, npm
 `node index`
 
 ## Contribute
-Filler contribute data
+TODO: Fill out contribution data
 
 ## Credits
-Inquirer
+- Inquirer
+- Dotenv
 
 ## Features
-README creation, LICENSE creation
+- README creation
+- LICENSE creation
 
 ## Tests
-Filler tests data
+TODO: Fill out test data
 
 ## License
 This project uses the [MIT license](https://choosealicense.com/licenses/mit/)
