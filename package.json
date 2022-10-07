@@ -11,9 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/JoePShoulak/studyme.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["readme", "node", "license", "inquirer"],
+  "author": "Joe P Shoulak",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/JoePShoulak/studyme/issues"
   },
