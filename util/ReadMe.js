@@ -15,12 +15,14 @@ class ReadMe {
             readmeData.badges += `![License Badge](https://img.shields.io/github/last-commit/${readmeData.gh_username}/${readmeData.gh_repo_name})`
         }
 
-        this.content = ""; // Set the content to blank so we can append
+        this.content = ""
+
         this.readmeData = readmeData;
 
         this.sections = ["Description", "Author", "Deployment", "Dependencies", "Installation", "Usage", "Contribute", "Credits", "Features", "Tests"];
         this.tableOfContents = this.generateTableOfContents();
 
+        this.generateContent();
 
         return this; // Returning this each time lets us do .chain() notation
     }
@@ -34,27 +36,24 @@ class ReadMe {
             content += `- [${section}](#${section.toLowerCase()})\n`
         }
 
-        return content;
+        // There's one extra new line if we don't slice here
+        return content.slice(0,-1);
     }
     
     // Generate the readme
     generateContent() {
-
-        return this
+        this
             .addTitle()
             .addBadges()
             .addSection("Table of Contents", this.tableOfContents)
-            .addSection("Description")
-            .addSection("Author")
-            .addSection("Deployment")
-            .addSection("Dependencies")
-            .addSection("Installation")
-            .addSection("Usage")
-            .addSection("Contribute")
-            .addSection("Credits")
-            .addSection("Features")
-            .addSection("Tests")
-            .addLicense()
+
+        for (let section of this.sections) {
+            this.addSection(section);
+        }
+
+        this.addLicense()
+
+        return this
     }
 
     /* == MAIN FUNCTIONS == */
@@ -66,6 +65,7 @@ class ReadMe {
     }
 
     // Add latest-commit and license badges to the project
+    // TODO: This should eventually be optional and customizable
     addBadges() {
         // If we have badge data, append that to the content; otherwise add a TODO for it
         this.content += this.readmeData.badges ? this.readmeData.badges + "\n" : "TODO: Add some nice badges!\n";
@@ -101,8 +101,7 @@ class ReadMe {
         return this.addSection("License", license.link);
     }
 
-
-
+    // Save out the file
     save() {
         let fileName = process.env.STUDYME_ENVIRONMENT ? "./test/README.md" : "./README.md"
 

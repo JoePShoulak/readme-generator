@@ -1,4 +1,3 @@
-import { writeFileSync } from "fs";
 import inquirer from "inquirer";
 import dotenv from "dotenv"
 
@@ -12,7 +11,7 @@ dotenv.config();
 inquirer
 	.prompt(questions) // Ask the questions
 	.then((answers) => { // Get the answers
-		let readme = new ReadMe(answers).generateContent(); // Generate the readme content and save it out
+		let readme = new ReadMe(answers); // Generate the readme content and save it out
 		readme.save();
 	})	
 	.catch((error) => {
