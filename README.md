@@ -1,4 +1,4 @@
-# StudyMe
+# This is a title
 ![License Badge](https://img.shields.io/github/license/joepshoulak/studyme) ![License Badge](https://img.shields.io/github/last-commit/joepshoulak/studyme)
 
 ## Table of Contents
@@ -14,37 +14,34 @@
 - [Tests](#tests)
 
 ## Description
-StudyMe is a README and LICENSE file generator for your Node.js projects. It asks you a few simple questions to guide you through the critically important parts of a standard ReadMe file and produces a well-formatted README.md automatically based on your responses.
-
-Stop copying and pasting README.md files from your other projects and other developers. Use StudyMe to make the README for your next project, and you'll want to use it for the rest!
+Generate a README so good, your users will want to study it!
 
 ## Author
-Joe Shoulak
+Joe P Shoulak
 
 ## Deployment
-TODO: Add a deployment link.
+Filler deployment data
 
 ## Dependencies
-- Node: v16.17.1
-- NPM: 8.15.0
+node, npm
 
 ## Installation
-`git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i`
+git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i
 
 ## Usage
-`node index`
+node index
 
 ## Contribute
-TODO: Add contribution instructions.
+Filler contribute data
 
 ## Credits
-This project uses Node and Inquirer.
+Inquirer
 
 ## Features
-Generates a README and a LICENSE file
+README creation, LICENSE creation
 
 ## Tests
-TODO: Add a list of tests users can run.
+Filler tests data
 
 ## License
 This project uses the [MIT license](https://choosealicense.com/licenses/mit/)
