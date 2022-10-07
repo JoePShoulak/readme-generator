@@ -27,10 +27,10 @@ TODO: Fill out deployment data
 - npm v8.15.0  
 
 ## Installation
-`git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i`
+`npm i studyme`
 
 ## Usage
-`node index`
+`node node_modules/studyme/index.js`
 
 ## Contribute
 TODO: Fill out contribution data
