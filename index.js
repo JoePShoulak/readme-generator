@@ -1,8 +1,8 @@
 import inquirer from "inquirer";
 import dotenv from "dotenv"
 
-import ReadMe from "./util/ReadMe.js";
-import questions from "./util/questions.js";
+import ReadMe from "./lib/ReadMe.js";
+import questions from "./lib/questions.js";
 
 // We need this to correctly access our process.env variables
 dotenv.config();
