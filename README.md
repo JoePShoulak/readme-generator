@@ -26,10 +26,10 @@ Filler deployment data
 node, npm
 
 ## Installation
-git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i
+`git clone https://github.com/JoePShoulak/studyme.git && cd studyme && npm i`
 
 ## Usage
-node index
+`node index`
 
 ## Contribute
 Filler contribute data
